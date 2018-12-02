@@ -1,58 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>2018年度信息系统资产登记</title>
-</head>
-<body>
-<form action="" method="post" >
-    <table>
-        <caption>2018年度信息系统资产登记</caption>
-        <tbody>
-            <tr>
-                <td>姓名：</td>
-                <td><input type="text" name="username"></td>
-            </tr>
-            <tr>
-                <td>主机编号：</td>
-                <td><abbr title="示例：B-1-0485"><input type="text" name="host"></abbr></td>
-            </tr>
-
-            <tr>
-                <td>显示器编号：</td>
-                 <td><abbr title="示例：B-1-0195"><input type="text" name="displayer"></abbr></td>
-            </tr>
-            <tr>
-                <td>IP地址：</td>
-                 <td><abbr title="示例：192.168.24.30"><input type="text" name="ip_addr"></abbr></td>
-            <tr>
-                <td>CPU型号：</td>
-                <td>
-                    <select name="cpu" id="cpu_info">
+{%  extends 'base.html' %}
+{% block body %}
+    <div class="container">
+      <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">信息资产登记</h2>
+        <input type="text" name="username" class="form-control" placeholder="姓名" required autofocus>
+        <input type="text" name="host" class="form-control" placeholder="主机编号" required>
+        <input type="text" name="displayer" class="form-control" placeholder="显示器编号" required>
+        <input type="text" name="ip_addr" class="form-control" placeholder="IP地址" required>
+        <select name="cpu" id="cpu_info" class="form-control" >
+                        <option value="None">选择你的CPU型号</option>
                         <option value="i3">i3</option>
                         <option value="E6600">E6600</option>
                         <option value="E6500">E6500</option>
                         <option value="i7">i7</option>
                         <option value="Xeon">Xeon</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>内存：</td>
-                <td>
-                    <select name="mem" id="mem_info">
+        </select>
+        <select name="mem" id="mem_info" class="form-control">
+                        <option value="None">选择你的内存大小</option>
                         <option value="4G">4G</option>
                         <option value="2G">2G</option>
                         <option value="6G">6G</option>
                         <option value="8G">8G</option>
                         <option value="3G">3G</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>所属部门：</td>
-                <td>
-                    <select name="dep" id="dep">
+        </select>
+        <select name="dep" id="dep" class="form-control">
+                        <option value="None">请选择您的部门</option>
                         <option value="1">MTK</option>
                         <option value="2">Asus_Gaming</option>
                         <option value="3">总裁办</option>
@@ -69,20 +41,17 @@
                         <option value="14">技术支持部</option>
                         <option value="15">Asus_Phone</option>
                         <option value="16">Asus_IMS</option>
-                    </select>
-                </td>
-            </tr>
-             <tr>
-                <td>备注(选填）：</td>
-                 <td><input type="text" name="comment"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="提交"></td>
-            </tr>
-        </tbody>
-    </table>
-
-</form>
-</body>
-</html>
+        </select>
+        <input type="text" name="comment" class="form-control" placeholder="备注（选填）" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">提交登记</button>
+      </form>
+    <ul>
+            {% for message in messages %}
+                    {% if message.tags == 'info' %}
+                        <li style="color: crimson;">{{ message }}</li>
+                    {% endif %}
+             {% endfor %}
+        </ul>
+    </div>
+  </body>
+{% endblock %}

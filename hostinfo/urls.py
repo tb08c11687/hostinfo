@@ -17,5 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from front import views
 urlpatterns = [
-    path('', views.IndexView.as_view(),name='index'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('query/', views.QueryView.as_view(), name='query'),
+    path('management/', views.ManagementView.as_view(), name='management'),
 ]

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '38q$ui0rhswru7f9_21ouo7z1n3&@xhd=+$w2@m*av@88ij8g1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.24.30']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -73,18 +73,25 @@ WSGI_APPLICATION = 'hostinfo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+#mysql数据库配置
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'misinfo',
+#         'HOST': '192.168.31.112',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'Mirror-0'
+#     }
+# }
 
+#本地测试配置
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'misinfo',
-        'HOST': '192.168.31.112',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'Mirror-0'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
